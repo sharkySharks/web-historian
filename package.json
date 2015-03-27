@@ -4,7 +4,10 @@
   "main": "web/basic-server.js",
   "author": "MakerSquare",
   "license": "Copyright 2015, MakerSquare. All rights reserved.",
-  "dependencies": {},
+  "dependencies": {
+    "node-static": "^0.7.6",
+    "underscore": "^1.8.2"
+  },
   "devDependencies": {
     "chai": "^1.9.0",
     "cron": "^1.0.3",
