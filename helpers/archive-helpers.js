@@ -26,12 +26,26 @@ exports.initialize = function(pathsObj){
 // modularize your code. Keep it clean!
 
 exports.readListOfUrls = function(){
+ // fs.readFile('../archives/sites.txt', {encoding: "utf-8"},function(err, data){
+ //    if ( err ) console.log('err');
+ //    var messages = data.split('\n').slice(0, -1).map(function(msg){
+ //      return JSON.parse(msg);
+ //    });
+
+ //    // return sites;
+ //  });
+  console.log("hellllloooo");
 };
 
 exports.isUrlInList = function(){
 };
 
-exports.addUrlToList = function(){
+exports.addUrlToList = function(url){
+  // var toWrite = url + '\n';
+  // fs.appendFile('../archives/sites.txt', toWrite, function(err){
+  //   if ( err ) throw err;
+  //   console.log('Success!');
+  // });
 };
 
 exports.isUrlArchived = function(){

@@ -13,12 +13,30 @@ var sendResponse = function(response, data, statusCode){
 };
 
 exports.handleRequest = function (req, res) {
-  
-  if(req.method === 'GET' && req.url === '/'){
-    sendResponse(res, '/web/public/index.html')
-
-  } 
+  if (req.method === 'GET'){
+  	res.writeHead(200, archive.headers);
+    
+    if(req.url === '/'){
+     fs.readFile(archive.paths.siteAssets + '/index.html', function(err, fileConents){
+      res.write(fileConents) 
+      res.end()
+     })
+    } else if ( req.url === '/styles.css'){
+  	 fs.readFile(archive.paths.siteAssets + '/styles.css', function(err, fileContents){
+      res.write(fileContents)
+      res.end();
+     }) 
+    }
+  } //else {
+      // archive.readListOfUrls();
+      // archive.isURLin our file
+      // req.on('data', function(data){
+      //   if ( err ) throw err;
+      //   archive.addUrlToList(data);
+      // });
+      // res.end();
+  // }
  
-  res.end(archive.paths.list);
+  // res.end(archive.paths.list);
 
 };
