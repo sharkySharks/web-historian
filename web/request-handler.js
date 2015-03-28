@@ -30,11 +30,10 @@ exports.handleRequest = function (req, res) {
   } //else {
       // archive.readListOfUrls();
       // archive.isURLin our file
-      // req.on('data', function(data){
-      //   if ( err ) throw err;
-      //   archive.addUrlToList(data);
-      // });
-      // res.end();
+      req.on('data', function(data){
+        archive.addUrlToList(data);
+        res.end();
+      });
   // }
  
   // res.end(archive.paths.list);
