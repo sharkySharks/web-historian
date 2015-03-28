@@ -27,15 +27,15 @@ exports.handleRequest = function (req, res) {
       res.end();
      }) 
     }
-  } //else {
+  } else {
       // archive.readListOfUrls();
       // archive.isURLin our file
-      // req.on('data', function(data){
-      //   if ( err ) throw err;
-      //   archive.addUrlToList(data);
-      // });
-      // res.end();
-  // }
+      req.on('data', function(data){
+        //if ( err ) throw err;
+        archive.addUrlToList(data);
+        res.end();
+      });
+  }
  
   // res.end(archive.paths.list);
 

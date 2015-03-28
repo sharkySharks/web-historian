@@ -41,11 +41,11 @@ exports.isUrlInList = function(){
 };
 
 exports.addUrlToList = function(url){
-  // var toWrite = url + '\n';
-  // fs.appendFile('../archives/sites.txt', toWrite, function(err){
-  //   if ( err ) throw err;
-  //   console.log('Success!');
-  // });
+  var toWrite = url + '\n';
+  fs.appendFile('../archives/sites.txt', toWrite, function(err){
+    if ( err ) throw err;
+    console.log('Success!');
+  });
 };
 
 exports.isUrlArchived = function(){
