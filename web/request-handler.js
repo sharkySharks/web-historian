@@ -32,6 +32,8 @@ exports.handleRequest = function (req, res) {
       // archive.isURLin our file
       req.on('data', function(data){
         archive.addUrlToList(data);
+        // console.log(archive.isUrlInList(data));
+        // console.log(archive.readListOfUrls());
         res.end();
       });
   // }
