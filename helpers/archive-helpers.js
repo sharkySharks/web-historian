@@ -41,7 +41,7 @@ exports.isUrlInList = function(){
 };
 
 exports.addUrlToList = function(url){
-  var toWrite = url + '\n';
+  var toWrite = url.slice(4) + '\n';
   fs.appendFile('archives/sites.txt', toWrite, function(err){
     console.log('Success! ' + url);
   });
