@@ -27,16 +27,30 @@ exports.handleRequest = function (req, res) {
       res.end();
      }) 
     }
-  } //else {
-      // archive.readListOfUrls();
-      // archive.isURLin our file
-      req.on('data', function(data){
-        archive.addUrlToList(data);
-        // console.log(archive.isUrlInList(data));
-        // console.log(archive.readListOfUrls());
-        res.end();
+   } else {
+    // archive.readListOfUrls();
+    // archive.isURLin our file
+    req.on('data', function(url){
+      // archive.addUrlToList(url);
+      archive.isUrlInList(url, function(url){
+        console.log(url);
       });
-  // }
+        //display the site they request -- 'archives/sites/url'
+      // console.log(archive.readListOfUrls());
+      res.end();
+    });
+
+
+    // req.on('data', function(url){
+    //   if ( archive.isUrlInList(url) ) 
+    //     // display the site from our archives
+    //   else { 
+    //     archive.addUrlToList(url);
+    //   }
+    //   // console.log(archive.readListOfUrls());
+    //   res.end();
+    // });
+  }
  
   // res.end(archive.paths.list);
 

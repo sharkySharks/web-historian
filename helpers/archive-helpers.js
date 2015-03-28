@@ -25,26 +25,37 @@ exports.initialize = function(pathsObj){
 // The following function names are provided to you to suggest how you might
 // modularize your code. Keep it clean!
 
-exports.readListOfUrls = function(){
- return fs.readFile('archives/sites.txt', {encoding: "utf-8"},function(err, data){
-    if ( err ) console.log('err');
-    return data.split('\n').slice(0, -1).map(function(msg){
-      return JSON.parse(msg);
-    });
+exports.readListOfUrls = function(callback){
+  fs.readFile('archives/sites.txt', {encoding: "utf-8"},function(err, data){
+    //if ( err ) console.log('err');
+    data = data.split('\n').slice(0, -1);    
+    
+    if (callback){
+      callback(data);
+    }
   });
-  console.log("hellllloooo");
 };
 
-exports.isUrlInList = function(url){
-  var sites = exports.readListOfUrls().split("\n").map(function(obj){
-    return JSON.parse(obj).url;
+exports.isUrlInList = function(url, callback){
+  url = url.toString().slice(4);
+  exports.readListOfUrls(function(sites){
+    var isFound = _.some(sites, function(site){
+      return site === url;
+    })
+
+    if ( isFound ){
+      callback(url); // one use of this callback will be to write (display) the page
+    }
+    else {
+      exports.addUrlToList(url);
+    }
   });
-  return sites.indexOf(url) !== -1;
+
 };
 
 exports.addUrlToList = function(url){
-  var toWrite = JSON.stringify({url: "" + url.slice(4)}) + '\n';
-  fs.appendFile('archives/sites.txt', toWrite, function(err){
+  // debugger;
+  fs.appendFile('archives/sites.txt', url + "\n", function(err){
     console.log('Success! ' + url);
   });
 };
